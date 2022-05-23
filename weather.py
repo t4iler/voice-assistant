@@ -1,16 +1,15 @@
 import requests
-# I have created an account on the 'newsapi.org' website
-key = "2e7586b62f1c4aa1bf318fbf419ef342"    #its my API key
+# I have created an account on the 'openweathermap.org' website
+key2 = "f1e05a8470695ebb5754f4ec039df882"           #its my API key
 
-api_address="x" + key    #website, where it takes news
+api_address = 'http://api.openweathermap.org/data/2.5/weather?q=Bishkek&appid=' + key2    #website, where it takes news
 json_data = requests.get(api_address).json()
 
-ar=[]
+def temp():
+    temperature = round(json_data["main"]["temp"]-273,1)
+    return temperature
 
-def news():
-    for i in range(3):        # (3) definesб how much news do we want to hear
-        ar.append("Number " + str(i+1) +", " + json_data["articles"][i]["title"] + ".")
+def des():
+    description = json_data["weather"][0]["description"]
+    return description
 
-    return ar
-
-# assist = news()
